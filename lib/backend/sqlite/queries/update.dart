@@ -52,3 +52,59 @@ DELETE FROM users WHERE id = $id;
 }
 
 /// END DELETEUSER
+
+/// BEGIN DELETEBOOK
+Future performDeleteBook(
+  Database database, {
+  int? id,
+}) {
+  final query = '''
+DELETE FROM books WHERE id = $id;
+''';
+  return database.rawQuery(query);
+}
+
+/// END DELETEBOOK
+
+/// BEGIN ADDBOOK
+Future performAddBook(
+  Database database, {
+  String? title,
+  String? autor,
+  String? editor,
+  String? publishyear,
+  String? isbn,
+  String? category,
+  String? localization,
+}) {
+  final query = '''
+INSERT INTO books (title, autor, editor, publish_year, isbn, category, localization)
+VALUES ('$title', '$autor', '$editor', '$publishyear', '$isbn', '$category', '$localization');
+''';
+  return database.rawQuery(query);
+}
+
+/// END ADDBOOK
+
+/// BEGIN UPDATEBOOK
+Future performUpdateBook(
+  Database database, {
+  String? title,
+  String? autor,
+  String? editor,
+  String? publishyear,
+  String? isbn,
+  String? category,
+  String? localization,
+  int? id,
+}) {
+  final query = '''
+UPDATE books
+SET  (title, autor, editor, publish_year, isbn, category, localization)
+VALUES ('$title', '$autor', '$editor', '$publishyear', '$isbn', '$category', '$localization')
+WHERE id = '$id';;
+''';
+  return database.rawQuery(query);
+}
+
+/// END UPDATEBOOK

@@ -1,25 +1,26 @@
 import '/backend/sqlite/sqlite_manager.dart';
-import '/components/user_form/user_form_widget.dart';
-import '/components/users_empty_state/users_empty_state_widget.dart';
+import '/components/book_form/book_form_widget.dart';
+import '/components/books_empty_state/books_empty_state_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'users_list_page_model.dart';
-export 'users_list_page_model.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'books_list_page_model.dart';
+export 'books_list_page_model.dart';
 
-class UsersListPageWidget extends StatefulWidget {
-  const UsersListPageWidget({super.key});
+class BooksListPageWidget extends StatefulWidget {
+  const BooksListPageWidget({super.key});
 
   @override
-  State<UsersListPageWidget> createState() => _UsersListPageWidgetState();
+  State<BooksListPageWidget> createState() => _BooksListPageWidgetState();
 }
 
-class _UsersListPageWidgetState extends State<UsersListPageWidget>
+class _BooksListPageWidgetState extends State<BooksListPageWidget>
     with TickerProviderStateMixin {
-  late UsersListPageModel _model;
+  late BooksListPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -28,7 +29,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => UsersListPageModel());
+    _model = createModel(context, () => BooksListPageModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -91,7 +92,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                   },
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
-                    child: const UserFormWidget(),
+                    child: const BookFormWidget(),
                   ),
                 );
               },
@@ -123,7 +124,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
             },
           ),
           title: Text(
-            'Usuários',
+            'Acervo',
             textAlign: TextAlign.start,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Inter Tight',
@@ -144,8 +145,8 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FutureBuilder<List<GetUsersRow>>(
-                    future: SQLiteManager.instance.getUsers(),
+                  FutureBuilder<List<GetBooksRow>>(
+                    future: SQLiteManager.instance.getBooks(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -161,12 +162,12 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                           ),
                         );
                       }
-                      final listViewGetUsersRowList = snapshot.data!;
-                      if (listViewGetUsersRowList.isEmpty) {
+                      final listViewGetBooksRowList = snapshot.data!;
+                      if (listViewGetBooksRowList.isEmpty) {
                         return Center(
                           child: SizedBox(
                             height: MediaQuery.sizeOf(context).height * 0.7,
-                            child: const UsersEmptyStateWidget(),
+                            child: const BooksEmptyStateWidget(),
                           ),
                         );
                       }
@@ -181,11 +182,11 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                         primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: listViewGetUsersRowList.length,
+                        itemCount: listViewGetBooksRowList.length,
                         separatorBuilder: (_, __) => const SizedBox(height: 10.0),
                         itemBuilder: (context, listViewIndex) {
-                          final listViewGetUsersRow =
-                              listViewGetUsersRowList[listViewIndex];
+                          final listViewGetBooksRow =
+                              listViewGetBooksRowList[listViewIndex];
                           return Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 1.0),
@@ -196,10 +197,10 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'UserDetailsPage',
+                                  'BookDetailsPage',
                                   queryParameters: {
-                                    'user': serializeParam(
-                                      listViewGetUsersRow,
+                                    'book': serializeParam(
+                                      listViewGetBooksRow,
                                       ParamType.SqliteRow,
                                     ),
                                   }.withoutNulls,
@@ -236,11 +237,19 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                             width: 2.0,
                                           ),
                                         ),
-                                        child: Icon(
-                                          Icons.person,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          size: 24.0,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            FaIcon(
+                                              FontAwesomeIcons.bookOpen,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                              size: 24.0,
+                                            ),
+                                          ],
                                         ),
                                       ),
                                       Expanded(
@@ -255,8 +264,8 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
-                                                  listViewGetUsersRow.name,
-                                                  'nome',
+                                                  listViewGetBooksRow.title,
+                                                  'titulo',
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -279,8 +288,8 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                                       12.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
-                                                  listViewGetUsersRow.email,
-                                                  'email@email.com',
+                                                  listViewGetBooksRow.autor,
+                                                  'autor',
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)

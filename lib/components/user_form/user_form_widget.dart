@@ -389,84 +389,123 @@ class _UserFormWidgetState extends State<UserFormWidget> {
                     ),
                   ].divide(const SizedBox(height: 12.0)),
                 ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    if (_model.formKey.currentState == null ||
-                        !_model.formKey.currentState!.validate()) {
-                      return;
-                    }
-                    if (widget.isEdit == true) {
-                      await SQLiteManager.instance.updateUser(
-                        name: _model.nameTextController.text,
-                        email: _model.emailTextController.text,
-                        phone: _model.phoneTextController.text,
-                        cpf: _model.cpfTextController.text,
-                        id: widget.user!.id!,
-                      );
-
-                      safeSetState(() {});
-                      Navigator.pop(context);
-                    } else {
-                      await SQLiteManager.instance.addUser(
-                        name: _model.nameTextController.text,
-                        email: _model.emailTextController.text,
-                        phone: _model.phoneTextController.text,
-                        cpf: _model.cpfTextController.text,
-                      );
-
-                      safeSetState(() {});
-                      Navigator.pop(context);
-                    }
-
-                    safeSetState(() {
-                      _model.nameTextController?.text =
-                          widget.isEdit == true ? widget.user!.name! : '';
-
-                      _model.emailTextController?.text =
-                          widget.isEdit == true ? widget.user!.email! : '';
-
-                      _model.phoneTextController?.text =
-                          widget.isEdit == true ? widget.user!.phone! : '';
-
-                      _model.cpfTextController?.text =
-                          widget.isEdit == true ? widget.user!.cpf! : '';
-                    });
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          'Informações atualizadas',
-                          style: TextStyle(
-                            color: FlutterFlowTheme.of(context).primaryText,
-                          ),
-                          textAlign: TextAlign.center,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                      text: 'Cancelar',
+                      options: FFButtonOptions(
+                        width: 120.0,
+                        height: 45.0,
+                        padding: const EdgeInsets.all(8.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodyMedium
+                            .override(
+                              fontFamily: 'Inter',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
+                            ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 1.0,
                         ),
-                        duration: const Duration(milliseconds: 4000),
-                        backgroundColor: FlutterFlowTheme.of(context).secondary,
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                    );
-
-                    context.pushNamed('UsersListPage');
-                  },
-                  text: 'Salvar',
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 48.0,
-                    padding: const EdgeInsets.all(8.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Inter Tight',
-                          color: FlutterFlowTheme.of(context).info,
-                          letterSpacing: 0.0,
-                        ),
-                    elevation: 0.0,
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
                     ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
+                    FFButtonWidget(
+                      onPressed: () async {
+                        if (_model.formKey.currentState == null ||
+                            !_model.formKey.currentState!.validate()) {
+                          return;
+                        }
+                        if (widget.isEdit == true) {
+                          await SQLiteManager.instance.updateUser(
+                            name: _model.nameTextController.text,
+                            email: _model.emailTextController.text,
+                            phone: _model.phoneTextController.text,
+                            cpf: _model.cpfTextController.text,
+                            id: widget.user!.id!,
+                          );
+
+                          safeSetState(() {});
+                          Navigator.pop(context);
+                        } else {
+                          await SQLiteManager.instance.addUser(
+                            name: _model.nameTextController.text,
+                            email: _model.emailTextController.text,
+                            phone: _model.phoneTextController.text,
+                            cpf: _model.cpfTextController.text,
+                          );
+
+                          safeSetState(() {});
+                          Navigator.pop(context);
+                        }
+
+                        safeSetState(() {
+                          _model.nameTextController?.text =
+                              widget.isEdit == true ? widget.user!.name! : '';
+
+                          _model.emailTextController?.text =
+                              widget.isEdit == true
+                                  ? widget.user!.email!
+                                  : '';
+
+                          _model.phoneTextController?.text =
+                              widget.isEdit == true
+                                  ? widget.user!.phone!
+                                  : '';
+
+                          _model.cpfTextController?.text =
+                              widget.isEdit == true ? widget.user!.cpf! : '';
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Informações atualizadas',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            duration: const Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
+                          ),
+                        );
+
+                        context.pushNamed('UsersListPage');
+                      },
+                      text: 'Salvar',
+                      options: FFButtonOptions(
+                        width: 120.0,
+                        height: 45.0,
+                        padding: const EdgeInsets.all(8.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter Tight',
+                                  color: FlutterFlowTheme.of(context).info,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ].divide(const SizedBox(width: 12.0)),
                 ),
               ].divide(const SizedBox(height: 16.0)),
             ),

@@ -78,11 +78,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
-          name: 'userDetailsPage',
+          name: 'UserDetailsPage',
           path: '/userDetailsPage',
           builder: (context, params) => UserDetailsPageWidget(
             user: params.getParam<GetUsersRow>(
               'user',
+              ParamType.SqliteRow,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'BooksListPage',
+          path: '/booksListPage',
+          builder: (context, params) => const BooksListPageWidget(),
+        ),
+        FFRoute(
+          name: 'BookDetailsPage',
+          path: '/bookDetailsPage',
+          builder: (context, params) => BookDetailsPageWidget(
+            book: params.getParam<GetBooksRow>(
+              'book',
               ParamType.SqliteRow,
             ),
           ),

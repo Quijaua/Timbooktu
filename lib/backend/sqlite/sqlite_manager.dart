@@ -33,6 +33,10 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<GetBooksRow>> getBooks() => performGetBooks(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
@@ -72,6 +76,56 @@ class SQLiteManager {
   }) =>
       performDeleteUser(
         _database,
+        id: id,
+      );
+
+  Future deleteBook({
+    int? id,
+  }) =>
+      performDeleteBook(
+        _database,
+        id: id,
+      );
+
+  Future addBook({
+    String? title,
+    String? autor,
+    String? editor,
+    String? publishyear,
+    String? isbn,
+    String? category,
+    String? localization,
+  }) =>
+      performAddBook(
+        _database,
+        title: title,
+        autor: autor,
+        editor: editor,
+        publishyear: publishyear,
+        isbn: isbn,
+        category: category,
+        localization: localization,
+      );
+
+  Future updateBook({
+    String? title,
+    String? autor,
+    String? editor,
+    String? publishyear,
+    String? isbn,
+    String? category,
+    String? localization,
+    int? id,
+  }) =>
+      performUpdateBook(
+        _database,
+        title: title,
+        autor: autor,
+        editor: editor,
+        publishyear: publishyear,
+        isbn: isbn,
+        category: category,
+        localization: localization,
         id: id,
       );
 

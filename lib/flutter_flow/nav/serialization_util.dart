@@ -208,6 +208,8 @@ dynamic deserializeParam<T>(
         switch (T) {
           case GetUsersRow:
             return GetUsersRow(data);
+          case GetBooksRow:
+            return GetBooksRow(data);
           default:
             return null;
         }
