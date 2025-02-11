@@ -213,8 +213,8 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                 },
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: const DialogDeleteBookWidget(
-                                    id: 0,
+                                  child: DialogDeleteBookWidget(
+                                    id: widget.book!.id!,
                                   ),
                                 ),
                               );
@@ -299,7 +299,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: widget.book?.title,
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -339,7 +338,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Colors.white,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -365,7 +363,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: widget.book?.autor,
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -405,7 +402,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Colors.white,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -431,7 +427,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: widget.book?.editor,
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -471,7 +466,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Colors.white,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -497,7 +491,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: widget.book?.publishYear,
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -537,7 +530,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Colors.white,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -564,7 +556,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: widget.book?.isbn,
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -604,7 +595,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Colors.white,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -630,7 +620,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: widget.book?.category,
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -670,7 +659,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Colors.white,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -696,7 +684,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: widget.book?.localization,
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -736,7 +723,6 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Colors.white,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
