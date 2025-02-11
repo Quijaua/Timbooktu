@@ -100,9 +100,15 @@ Future performUpdateBook(
 }) {
   final query = '''
 UPDATE books
-SET  (title, autor, editor, publish_year, isbn, category, localization)
-VALUES ('$title', '$autor', '$editor', $publishyear, '$isbn', '$category', '$localization')
+SET title = '$title',
+    autor = '$autor',
+    editor = '$editor',
+    publish_year = $publishyear,
+    isbn = '$isbn',
+    category = '$category',
+    localization = '$localization'
 WHERE id = $id;
+
 ''';
   return database.rawQuery(query);
 }
