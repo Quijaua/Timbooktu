@@ -735,8 +735,6 @@ class _BookFormWidgetState extends State<BookFormWidget> {
                                   _model.localizationTextController.text,
                               id: widget.book?.id,
                             );
-
-                            safeSetState(() {});
                             Navigator.pop(context);
                           } else {
                             await SQLiteManager.instance.addBook(
@@ -750,8 +748,6 @@ class _BookFormWidgetState extends State<BookFormWidget> {
                               localization:
                                   _model.localizationTextController.text,
                             );
-
-                            safeSetState(() {});
                             Navigator.pop(context);
                           }
 
