@@ -102,7 +102,7 @@ Future performUpdateBook(
 UPDATE books
 SET  (title, autor, editor, publish_year, isbn, category, localization)
 VALUES ('$title', '$autor', '$editor', '$publishyear', '$isbn', '$category', '$localization')
-WHERE id = '$id';
+WHERE id = $id;
 ''';
   return database.rawQuery(query);
 }
