@@ -294,7 +294,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                     decoration: InputDecoration(
                                       labelText: 'Título',
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyLarge
                                           .override(
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
@@ -348,7 +348,8 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                     minLines: 1,
                                     validator: _model.textController1Validator
                                         .asValidator(context),
-                                  ),
+                                  ).blockShortcuts() // Prevents the shortcut(s) from triggering while typing in the text field
+                                  ,
                                   TextFormField(
                                     controller: _model.textController2,
                                     focusNode: _model.textFieldFocusNode2,
@@ -358,7 +359,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                     decoration: InputDecoration(
                                       labelText: 'Autor',
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyLarge
                                           .override(
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
@@ -486,7 +487,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                     decoration: InputDecoration(
                                       labelText: 'Ano de Publicação',
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyLarge
                                           .override(
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
