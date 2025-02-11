@@ -42,7 +42,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
     _model.textFieldFocusNode3 ??= FocusNode();
 
     _model.textController4 ??=
-        TextEditingController(text: widget.book?.publishYear);
+        TextEditingController(text: widget.book?.publishYear?.toString());
     _model.textFieldFocusNode4 ??= FocusNode();
 
     _model.textController5 ??= TextEditingController(text: widget.book?.isbn);

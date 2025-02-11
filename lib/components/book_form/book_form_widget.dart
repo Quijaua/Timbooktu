@@ -48,7 +48,9 @@ class _BookFormWidgetState extends State<BookFormWidget> {
     _model.editorFocusNode ??= FocusNode();
 
     _model.publishYearTextController ??= TextEditingController(
-        text: widget.isEdit == true ? widget.book?.publishYear : '');
+        text: widget.isEdit == true
+            ? widget.book?.publishYear?.toString()
+            : '');
     _model.publishYearFocusNode ??= FocusNode();
 
     _model.isbnTextController ??= TextEditingController(
@@ -705,7 +707,8 @@ class _BookFormWidgetState extends State<BookFormWidget> {
                             title: _model.titleTextController.text,
                             autor: _model.autorTextController.text,
                             editor: _model.editorTextController.text,
-                            publishyear: _model.publishYearTextController.text,
+                            publishyear: int.tryParse(
+                                _model.publishYearTextController.text),
                             isbn: _model.isbnTextController.text,
                             category: _model.categoryTextController.text,
                             localization:
@@ -718,7 +721,8 @@ class _BookFormWidgetState extends State<BookFormWidget> {
                             title: _model.titleTextController.text,
                             autor: _model.autorTextController.text,
                             editor: _model.editorTextController.text,
-                            publishyear: _model.publishYearTextController.text,
+                            publishyear: int.tryParse(
+                                _model.publishYearTextController.text),
                             isbn: _model.isbnTextController.text,
                             category: _model.categoryTextController.text,
                             localization:
@@ -741,7 +745,7 @@ class _BookFormWidgetState extends State<BookFormWidget> {
 
                           _model.publishYearTextController?.text =
                               widget.isEdit == true
-                                  ? widget.book!.publishYear!
+                                  ? widget.book!.publishYear!.toString()
                                   : '';
 
                           _model.isbnTextController?.text =

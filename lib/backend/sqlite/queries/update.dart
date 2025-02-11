@@ -72,14 +72,14 @@ Future performAddBook(
   String? title,
   String? autor,
   String? editor,
-  String? publishyear,
+  int? publishyear,
   String? isbn,
   String? category,
   String? localization,
 }) {
   final query = '''
 INSERT INTO books (title, autor, editor, publish_year, isbn, category, localization)
-VALUES ('$title', '$autor', '$editor', '$publishyear', '$isbn', '$category', '$localization');
+VALUES ('$title', '$autor', '$editor', $publishyear, '$isbn', '$category', '$localization');
 ''';
   return database.rawQuery(query);
 }
@@ -92,7 +92,7 @@ Future performUpdateBook(
   String? title,
   String? autor,
   String? editor,
-  String? publishyear,
+  int? publishyear,
   String? isbn,
   String? category,
   String? localization,
@@ -101,7 +101,7 @@ Future performUpdateBook(
   final query = '''
 UPDATE books
 SET  (title, autor, editor, publish_year, isbn, category, localization)
-VALUES ('$title', '$autor', '$editor', '$publishyear', '$isbn', '$category', '$localization')
+VALUES ('$title', '$autor', '$editor', $publishyear, '$isbn', '$category', '$localization')
 WHERE id = $id;
 ''';
   return database.rawQuery(query);

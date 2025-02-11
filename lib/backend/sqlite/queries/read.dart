@@ -49,7 +49,7 @@ class GetBooksRow extends SqliteRow {
   String get title => data['title'] as String;
   String get autor => data['autor'] as String;
   String? get editor => data['editor'] as String?;
-  String? get publishYear => data['publish_year'] as String?;
+  int? get publishYear => data['publish_year'] as int?;
   String? get isbn => data['isbn'] as String?;
   String? get category => data['category'] as String?;
   String? get localization => data['localization'] as String?;
