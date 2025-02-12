@@ -101,6 +101,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.SqliteRow,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'detalhes2',
+          path: '/detalhes2',
+          builder: (context, params) => const Detalhes2Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

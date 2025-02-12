@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'book_details_page_widget.dart' show BookDetailsPageWidget;
+import 'detalhes2_widget.dart' show Detalhes2Widget;
 import 'package:flutter/material.dart';
 
-class BookDetailsPageModel extends FlutterFlowModel<BookDetailsPageWidget> {
+class Detalhes2Model extends FlutterFlowModel<Detalhes2Widget> {
   @override
   void initState(BuildContext context) {}
 
