@@ -1,5 +1,5 @@
 import '/backend/sqlite/sqlite_manager.dart';
-import '/components/users_empty_state/users_empty_state_widget.dart';
+import '/components/loan_empty_state/loan_empty_state_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -137,7 +137,7 @@ class _LoanListPageWidgetState extends State<LoanListPageWidget>
                         return Center(
                           child: Container(
                             height: MediaQuery.sizeOf(context).height * 0.7,
-                            child: UsersEmptyStateWidget(),
+                            child: LoanEmptyStateWidget(),
                           ),
                         );
                       }

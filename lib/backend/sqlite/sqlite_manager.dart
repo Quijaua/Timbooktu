@@ -133,5 +133,17 @@ class SQLiteManager {
         id: id,
       );
 
+  Future addLoan({
+    int? bookid,
+    int? userid,
+    int? returnDateDays,
+  }) =>
+      performAddLoan(
+        _database,
+        bookid: bookid,
+        userid: userid,
+        returnDateDays: returnDateDays,
+      );
+
   /// END UPDATE QUERY CALLS
 }

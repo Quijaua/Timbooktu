@@ -215,7 +215,25 @@ class _SettingsFormWidgetState extends State<SettingsFormWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          FFAppState().returnDateDays =
+                              int.parse(_model.loanTimeTextController.text);
+                          safeSetState(() {});
                           Navigator.pop(context);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Informações atualizadas',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).secondary,
+                            ),
+                          );
                         },
                         text: 'Salvar',
                         options: FFButtonOptions(

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'loan_form_model.dart';
 export 'loan_form_model.dart';
 
@@ -46,6 +47,8 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
       child: Container(
@@ -198,7 +201,27 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          await SQLiteManager.instance.addLoan(
+                            bookid: widget.bookId,
+                            userid: widget.user?.id,
+                            returnDateDays: FFAppState().returnDateDays,
+                          );
                           Navigator.pop(context);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Informações atualizadas',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).secondary,
+                            ),
+                          );
                         },
                         text: 'Salvar',
                         options: FFButtonOptions(

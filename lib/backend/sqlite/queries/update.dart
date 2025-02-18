@@ -114,3 +114,20 @@ WHERE id = ${id};
 }
 
 /// END UPDATEBOOK
+
+/// BEGIN ADDLOAN
+Future performAddLoan(
+  Database database, {
+  int? bookid,
+  int? userid,
+  int? returnDateDays,
+}) {
+  final query = '''
+INSERT INTO loans (book_id, user_id, loan_date, return_date) 
+VALUES ('${bookid}', '${userid}', CURRENT_DATE, DATE(CURRENT_DATE, '+${returnDateDays} days'));
+
+''';
+  return database.rawQuery(query);
+}
+
+/// END ADDLOAN
