@@ -226,6 +226,8 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                             ),
                           );
+
+                          context.pushNamed('LoanListPage');
                         },
                         text: 'Salvar',
                         options: FFButtonOptions(

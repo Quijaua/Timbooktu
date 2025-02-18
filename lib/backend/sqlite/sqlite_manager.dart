@@ -145,5 +145,13 @@ class SQLiteManager {
         returnDateDays: returnDateDays,
       );
 
+  Future returnLoan({
+    int? id,
+  }) =>
+      performReturnLoan(
+        _database,
+        id: id,
+      );
+
   /// END UPDATE QUERY CALLS
 }

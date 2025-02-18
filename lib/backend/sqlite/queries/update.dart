@@ -131,3 +131,19 @@ VALUES ('${bookid}', '${userid}', CURRENT_DATE, DATE(CURRENT_DATE, '+${returnDat
 }
 
 /// END ADDLOAN
+
+/// BEGIN RETURNLOAN
+Future performReturnLoan(
+  Database database, {
+  int? id,
+}) {
+  final query = '''
+UPDATE loan
+SET is_activated = 0,
+WHERE id = ${id};
+
+''';
+  return database.rawQuery(query);
+}
+
+/// END RETURNLOAN
