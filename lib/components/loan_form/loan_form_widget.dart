@@ -131,8 +131,12 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
                                     .map((e) => e.name)
                                     .withoutNulls
                                     .toList(),
-                                onChanged: (val) =>
-                                    safeSetState(() => _model.nameValue = val),
+                                onChanged: (val) async {
+                                  safeSetState(() => _model.nameValue = val);
+                                  _model.userid =
+                                      nameGetUsersRowList.firstOrNull?.id;
+                                  safeSetState(() {});
+                                },
                                 width: 310.7,
                                 height: 51.49,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -203,7 +207,7 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
                         onPressed: () async {
                           await SQLiteManager.instance.addLoan(
                             bookid: widget.bookId,
-                            userid: widget.user?.id,
+                            userid: _model.userid,
                             returnDateDays: FFAppState().returnDateDays,
                           );
                           Navigator.pop(context);

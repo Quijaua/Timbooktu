@@ -4,6 +4,10 @@ import 'loan_form_widget.dart' show LoanFormWidget;
 import 'package:flutter/material.dart';
 
 class LoanFormModel extends FlutterFlowModel<LoanFormWidget> {
+  ///  Local state fields for this component.
+
+  int? userid;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
