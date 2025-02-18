@@ -8,3 +8,5 @@ export '/pages/books_list_page/books_list_page_widget.dart'
     show BooksListPageWidget;
 export '/pages/book_details_page/book_details_page_widget.dart'
     show BookDetailsPageWidget;
+export '/pages/loan_list_page/loan_list_page_widget.dart'
+    show LoanListPageWidget;

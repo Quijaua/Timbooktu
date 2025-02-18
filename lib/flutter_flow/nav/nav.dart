@@ -47,7 +47,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : const HomePageWidget(),
+          : HomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -65,17 +65,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : const HomePageWidget(),
+              : HomePageWidget(),
         ),
         FFRoute(
           name: 'UsersListPage',
           path: '/usersListPage',
-          builder: (context, params) => const UsersListPageWidget(),
+          builder: (context, params) => UsersListPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
           name: 'UserDetailsPage',
@@ -90,7 +90,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'BooksListPage',
           path: '/booksListPage',
-          builder: (context, params) => const BooksListPageWidget(),
+          builder: (context, params) => BooksListPageWidget(),
         ),
         FFRoute(
           name: 'BookDetailsPage',
@@ -101,6 +101,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.SqliteRow,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'LoanListPage',
+          path: '/loanListPage',
+          builder: (context, params) => LoanListPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -264,7 +269,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

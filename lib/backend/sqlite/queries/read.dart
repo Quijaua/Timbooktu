@@ -12,7 +12,7 @@ Future<List<T>> _readQuery<T>(
 Future<List<GetUsersRow>> performGetUsers(
   Database database,
 ) {
-  const query = '''
+  final query = '''
 SELECT * FROM users WHERE is_activated = 1 AND is_activated IS NOT NULL;
 
 ''';
@@ -20,7 +20,7 @@ SELECT * FROM users WHERE is_activated = 1 AND is_activated IS NOT NULL;
 }
 
 class GetUsersRow extends SqliteRow {
-  GetUsersRow(super.data);
+  GetUsersRow(Map<String, dynamic> data) : super(data);
 
   int? get id => data['id'] as int?;
   String? get name => data['name'] as String?;
@@ -35,7 +35,7 @@ class GetUsersRow extends SqliteRow {
 Future<List<GetBooksRow>> performGetBooks(
   Database database,
 ) {
-  const query = '''
+  final query = '''
 SELECT * FROM books;
 
 ''';
@@ -43,7 +43,7 @@ SELECT * FROM books;
 }
 
 class GetBooksRow extends SqliteRow {
-  GetBooksRow(super.data);
+  GetBooksRow(Map<String, dynamic> data) : super(data);
 
   int? get id => data['id'] as int?;
   String get title => data['title'] as String;
@@ -56,3 +56,37 @@ class GetBooksRow extends SqliteRow {
 }
 
 /// END GETBOOKS
+
+/// BEGIN GETLOANS
+Future<List<GetLoansRow>> performGetLoans(
+  Database database,
+) {
+  final query = '''
+SELECT 
+    loans.id AS id,
+    books.title AS book_title,
+    users.name AS user_name, 
+    loans.loan_date, 
+    loans.return_date, 
+    loans.is_activated
+    FROM loans
+JOIN 
+    books ON loans.book_id = books.id 
+JOIN 
+    users ON loans.user_id = users.id;
+''';
+  return _readQuery(database, query, (d) => GetLoansRow(d));
+}
+
+class GetLoansRow extends SqliteRow {
+  GetLoansRow(Map<String, dynamic> data) : super(data);
+
+  int? get id => data['id'] as int?;
+  String? get bookTitle => data['book_title'] as String?;
+  String? get userName => data['user_name'] as String?;
+  String? get loanDate => data['loan_date'] as String?;
+  String? get returnDate => data['return_date'] as String?;
+  int? get isActivated => data['is_activated'] as int?;
+}
+
+/// END GETLOANS

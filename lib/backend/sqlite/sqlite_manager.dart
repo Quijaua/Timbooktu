@@ -37,6 +37,10 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<GetLoansRow>> getLoans() => performGetLoans(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

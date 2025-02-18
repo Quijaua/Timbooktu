@@ -10,7 +10,7 @@ Future performAddUser(
 }) {
   final query = '''
 INSERT INTO users (name, email,  phone, cpf)
-VALUES ('$name', '$email', '$phone', '$cpf');
+VALUES ('${name}', '${email}', '${phone}', '${cpf}');
 ''';
   return database.rawQuery(query);
 }
@@ -29,11 +29,11 @@ Future performUpdateUser(
   final query = '''
 UPDATE users
 SET 
-    name = '$name',
-    email = '$email',
-    phone = '$phone',
-    cpf = '$cpf'
-WHERE id = '$id';
+    name = '${name}',
+    email = '${email}',
+    phone = '${phone}',
+    cpf = '${cpf}'
+WHERE id = '${id}';
 ''';
   return database.rawQuery(query);
 }
@@ -46,7 +46,7 @@ Future performDeleteUser(
   int? id,
 }) {
   final query = '''
-DELETE FROM users WHERE id = $id;
+DELETE FROM users WHERE id = ${id};
 ''';
   return database.rawQuery(query);
 }
@@ -59,7 +59,7 @@ Future performDeleteBook(
   int? id,
 }) {
   final query = '''
-DELETE FROM books WHERE id = $id;
+DELETE FROM books WHERE id = ${id};
 ''';
   return database.rawQuery(query);
 }
@@ -79,7 +79,7 @@ Future performAddBook(
 }) {
   final query = '''
 INSERT INTO books (title, autor, editor, publish_year, isbn, category, localization)
-VALUES ('$title', '$autor', '$editor', $publishyear, '$isbn', '$category', '$localization');
+VALUES ('${title}', '${autor}', '${editor}', ${publishyear}, '${isbn}', '${category}', '${localization}');
 ''';
   return database.rawQuery(query);
 }
@@ -100,14 +100,14 @@ Future performUpdateBook(
 }) {
   final query = '''
 UPDATE books
-SET title = '$title',
-    autor = '$autor',
-    editor = '$editor',
-    publish_year = $publishyear,
-    isbn = '$isbn',
-    category = '$category',
-    localization = '$localization'
-WHERE id = $id;
+SET title = '${title}',
+    autor = '${autor}',
+    editor = '${editor}',
+    publish_year = ${publishyear},
+    isbn = '${isbn}',
+    category = '${category}',
+    localization = '${localization}'
+WHERE id = ${id};
 
 ''';
   return database.rawQuery(query);

@@ -45,8 +45,8 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -91,7 +91,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                   },
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
-                    child: const UserFormWidget(),
+                    child: UserFormWidget(),
                   ),
                 );
               },
@@ -113,7 +113,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -132,14 +132,14 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -164,15 +164,15 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                       final listViewGetUsersRowList = snapshot.data!;
                       if (listViewGetUsersRowList.isEmpty) {
                         return Center(
-                          child: SizedBox(
+                          child: Container(
                             height: MediaQuery.sizeOf(context).height * 0.7,
-                            child: const UsersEmptyStateWidget(),
+                            child: UsersEmptyStateWidget(),
                           ),
                         );
                       }
 
                       return ListView.separated(
-                        padding: const EdgeInsets.fromLTRB(
+                        padding: EdgeInsets.fromLTRB(
                           0,
                           10.0,
                           0,
@@ -182,12 +182,12 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: listViewGetUsersRowList.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 10.0),
+                        separatorBuilder: (_, __) => SizedBox(height: 10.0),
                         itemBuilder: (context, listViewIndex) {
                           final listViewGetUsersRow =
                               listViewGetUsersRowList[listViewIndex];
                           return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 1.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -207,7 +207,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                               },
                               child: Container(
                                 width: double.infinity,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
@@ -221,7 +221,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                   ],
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -250,7 +250,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
@@ -265,7 +265,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF14181B),
+                                                              Color(0xFF14181B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -274,7 +274,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 4.0, 0.0, 0.0),
                                               child: Text(
@@ -289,7 +289,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF57636C),
+                                                              Color(0xFF57636C),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -303,13 +303,13 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                       Card(
                                         clipBehavior:
                                             Clip.antiAliasWithSaveLayer,
-                                        color: const Color(0xFFF1F4F8),
+                                        color: Color(0xFFF1F4F8),
                                         elevation: 1.0,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(40.0),
                                         ),
-                                        child: const Padding(
+                                        child: Padding(
                                           padding: EdgeInsets.all(4.0),
                                           child: Icon(
                                             Icons.arrow_forward_ios,

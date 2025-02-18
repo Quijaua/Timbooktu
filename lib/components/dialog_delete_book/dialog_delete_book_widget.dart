@@ -43,11 +43,11 @@ class _DialogDeleteBookWidgetState extends State<DialogDeleteBookWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.transparent,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+        padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
         child: Container(
           width: 400.0,
           decoration: BoxDecoration(
@@ -55,7 +55,7 @@ class _DialogDeleteBookWidgetState extends State<DialogDeleteBookWidget> {
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -92,9 +92,9 @@ class _DialogDeleteBookWidgetState extends State<DialogDeleteBookWidget> {
                       options: FFButtonOptions(
                         width: 120.0,
                         height: 40.0,
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         textStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
@@ -121,9 +121,9 @@ class _DialogDeleteBookWidgetState extends State<DialogDeleteBookWidget> {
                       options: FFButtonOptions(
                         width: 120.0,
                         height: 40.0,
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).error,
                         textStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
@@ -132,15 +132,15 @@ class _DialogDeleteBookWidgetState extends State<DialogDeleteBookWidget> {
                                   letterSpacing: 0.0,
                                 ),
                         elevation: 0.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                  ].divide(const SizedBox(width: 12.0)),
+                  ].divide(SizedBox(width: 12.0)),
                 ),
-              ].divide(const SizedBox(height: 16.0)),
+              ].divide(SizedBox(height: 16.0)),
             ),
           ),
         ),
