@@ -35,8 +35,8 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
     super.initState();
     _model = createModel(context, () => UsersListPageModel());
 
-    _model.searchInputTextController ??= TextEditingController();
-    _model.searchInputFocusNode ??= FocusNode();
+    _model.textSearchTextController ??= TextEditingController();
+    _model.textSearchFocusNode ??= FocusNode();
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -171,71 +171,42 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFF1F4F8),
-                                  borderRadius: BorderRadius.circular(25.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 12.0, 12.0),
-                                        child: Icon(
-                                          Icons.search,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
+                            Container(
+                              height: 200.0,
+                              child: TextFormField(
+                                controller: _model.textSearchTextController,
+                                focusNode: _model.textSearchFocusNode,
+                                autofocus: false,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  hintText: 'Buscar usuário por nome',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
                                       ),
-                                      Expanded(
-                                        child: TextFormField(
-                                          controller:
-                                              _model.searchInputTextController,
-                                          focusNode:
-                                              _model.searchInputFocusNode,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            hintText: 'Buscar usuário por nome',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Inter',
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            enabledBorder: InputBorder.none,
-                                            focusedBorder: InputBorder.none,
-                                            errorBorder: InputBorder.none,
-                                            focusedErrorBorder:
-                                                InputBorder.none,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                letterSpacing: 0.0,
-                                              ),
-                                          minLines: 1,
-                                          validator: _model
-                                              .searchInputTextControllerValidator
-                                              .asValidator(context),
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(width: 12.0)),
-                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
                                 ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
+                                minLines: 1,
+                                validator: _model
+                                    .textSearchTextControllerValidator
+                                    .asValidator(context),
                               ),
                             ),
                             FFButtonWidget(
                               onPressed: () async {
                                 _model.searchName =
-                                    _model.searchInputTextController.text;
+                                    _model.textSearchTextController.text;
                                 safeSetState(() {});
                               },
                               text: 'Buscar',
@@ -256,6 +227,9 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                 elevation: 0.0,
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
+                            ),
+                            Container(
+                              height: 200.0,
                             ),
                             FutureBuilder<List<GetUsersRow>>(
                               future: SQLiteManager.instance.getUsers(
@@ -470,6 +444,9 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                                   },
                                 );
                               },
+                            ),
+                            Container(
+                              height: 200.0,
                             ),
                           ].divide(SizedBox(height: 15.0)),
                         ),
