@@ -157,30 +157,57 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                   children: [
                     Container(
                       height: 48.93,
-                      child: TextFormField(
-                        controller: _model.searchTextTextController,
-                        focusNode: _model.searchTextFocusNode,
-                        autofocus: false,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintText: 'Buscar usuário por nome',
-                          hintStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          focusedErrorBorder: InputBorder.none,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
-                              letterSpacing: 0.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: BorderRadius.circular(8.0),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.search_sharp,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(4.0),
+                              child: TextFormField(
+                                controller: _model.searchTextTextController,
+                                focusNode: _model.searchTextFocusNode,
+                                autofocus: false,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  hintText: 'Buscar usuário por nome',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
+                                textAlign: TextAlign.start,
+                                maxLines: null,
+                                validator: _model
+                                    .searchTextTextControllerValidator
+                                    .asValidator(context),
+                              ),
                             ),
-                        minLines: 1,
-                        validator: _model.searchTextTextControllerValidator
-                            .asValidator(context),
+                          ),
+                        ],
                       ),
                     ),
                     FFButtonWidget(
