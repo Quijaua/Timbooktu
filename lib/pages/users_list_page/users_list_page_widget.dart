@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'users_list_page_model.dart';
 export 'users_list_page_model.dart';
@@ -34,6 +35,12 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => UsersListPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.searchName = null;
+      safeSetState(() {});
+    });
 
     _model.searchTextTextController ??= TextEditingController();
     _model.searchTextFocusNode ??= FocusNode();
@@ -248,7 +255,9 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                     children: [
                       FutureBuilder<List<GetUsersRow>>(
                         future: SQLiteManager.instance.getUsers(
-                          name: _model.searchName,
+                          name: _model.searchName == ''
+                              ? _model.searchName
+                              : null,
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
