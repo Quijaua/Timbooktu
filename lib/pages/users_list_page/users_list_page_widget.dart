@@ -146,12 +146,12 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Column(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -236,215 +236,208 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                     ),
                   ].divide(SizedBox(height: 10.0)),
                 ),
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 16.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        FutureBuilder<List<GetUsersRow>>(
-                          future: SQLiteManager.instance.getUsers(
-                            name: _model.searchName,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
-                                    ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 16.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      FutureBuilder<List<GetUsersRow>>(
+                        future: SQLiteManager.instance.getUsers(
+                          name: _model.searchName,
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
                                   ),
                                 ),
-                              );
-                            }
-                            final listViewGetUsersRowList = snapshot.data!;
-                            if (listViewGetUsersRowList.isEmpty) {
-                              return Center(
-                                child: Container(
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.7,
-                                  child: UsersEmptyStateWidget(),
-                                ),
-                              );
-                            }
-
-                            return ListView.separated(
-                              padding: EdgeInsets.fromLTRB(
-                                0,
-                                10.0,
-                                0,
-                                10.0,
                               ),
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: listViewGetUsersRowList.length,
-                              separatorBuilder: (_, __) =>
-                                  SizedBox(height: 10.0),
-                              itemBuilder: (context, listViewIndex) {
-                                final listViewGetUsersRow =
-                                    listViewGetUsersRowList[listViewIndex];
-                                return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 1.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed(
-                                        UserDetailsPageWidget.routeName,
-                                        queryParameters: {
-                                          'user': serializeParam(
-                                            listViewGetUsersRow,
-                                            ParamType.SqliteRow,
+                            );
+                          }
+                          final listViewGetUsersRowList = snapshot.data!;
+                          if (listViewGetUsersRowList.isEmpty) {
+                            return Center(
+                              child: Container(
+                                height: MediaQuery.sizeOf(context).height * 0.7,
+                                child: UsersEmptyStateWidget(),
+                              ),
+                            );
+                          }
+
+                          return ListView.separated(
+                            padding: EdgeInsets.fromLTRB(
+                              0,
+                              10.0,
+                              0,
+                              10.0,
+                            ),
+                            primary: false,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: listViewGetUsersRowList.length,
+                            separatorBuilder: (_, __) => SizedBox(height: 10.0),
+                            itemBuilder: (context, listViewIndex) {
+                              final listViewGetUsersRow =
+                                  listViewGetUsersRowList[listViewIndex];
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 1.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      UserDetailsPageWidget.routeName,
+                                      queryParameters: {
+                                        'user': serializeParam(
+                                          listViewGetUsersRow,
+                                          ParamType.SqliteRow,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 0.0,
+                                          color: Color(0xFFE0E3E7),
+                                          offset: Offset(
+                                            0.0,
+                                            1.0,
                                           ),
-                                        }.withoutNulls,
-                                      );
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 0.0,
-                                            color: Color(0xFFE0E3E7),
-                                            offset: Offset(
-                                              0.0,
-                                              1.0,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: 44.0,
-                                              height: 44.0,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent1,
-                                                  width: 2.0,
-                                                ),
-                                              ),
-                                              child: Icon(
-                                                Icons.person,
+                                        )
+                                      ],
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: 44.0,
+                                            height: 44.0,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .accent1,
+                                                width: 2.0,
+                                              ),
+                                            ),
+                                            child: Icon(
+                                              Icons.person,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      listViewGetUsersRow.name,
+                                                      'nome',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 4.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      listViewGetUsersRow.email,
+                                                      'email@email.com',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Card(
+                                            clipBehavior:
+                                                Clip.antiAliasWithSaveLayer,
+                                            color: Color(0xFFF1F4F8),
+                                            elevation: 1.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(40.0),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(4.0),
+                                              child: Icon(
+                                                Icons.arrow_forward_ios,
+                                                color: Color(0xFF57636C),
                                                 size: 24.0,
                                               ),
                                             ),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(12.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      valueOrDefault<String>(
-                                                        listViewGetUsersRow
-                                                            .name,
-                                                        'nome',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            color: Color(
-                                                                0xFF14181B),
-                                                            fontSize: 16.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(12.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      valueOrDefault<String>(
-                                                        listViewGetUsersRow
-                                                            .email,
-                                                        'email@email.com',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            color: Color(
-                                                                0xFF57636C),
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Card(
-                                              clipBehavior:
-                                                  Clip.antiAliasWithSaveLayer,
-                                              color: Color(0xFFF1F4F8),
-                                              elevation: 1.0,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(40.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(4.0),
-                                                child: Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  color: Color(0xFF57636C),
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation']!),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ].divide(SizedBox(height: 15.0)),
-                    ),
+                                  ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation']!),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ].divide(SizedBox(height: 15.0)),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
