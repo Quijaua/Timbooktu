@@ -16,7 +16,8 @@ Future<List<GetUsersRow>> performGetUsers(
   final query = '''
 SELECT *
 FROM users
-WHERE is_activated = 1 AND name LIKE '%' || COALESCE('${name}', '') || '%';
+WHERE is_activated = 1 
+  AND (name LIKE '%' || COALESCE('${name}', '') || '%' OR '${name}' IS NULL OR '${name}' = '');
 
 ''';
   return _readQuery(database, query, (d) => GetUsersRow(d));
