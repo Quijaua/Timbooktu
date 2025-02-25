@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'book_details_page_widget.dart' show BookDetailsPageWidget;
 import 'package:flutter/material.dart';
 

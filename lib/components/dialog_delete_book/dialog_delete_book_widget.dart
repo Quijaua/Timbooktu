@@ -2,6 +2,7 @@ import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'dialog_delete_book_model.dart';
 export 'dialog_delete_book_model.dart';
@@ -115,7 +116,7 @@ class _DialogDeleteBookWidgetState extends State<DialogDeleteBookWidget> {
                           id: widget.id!,
                         );
 
-                        context.pushNamed('BooksListPage');
+                        context.pushNamed(BooksListPageWidget.routeName);
                       },
                       text: 'Excluir',
                       options: FFButtonOptions(

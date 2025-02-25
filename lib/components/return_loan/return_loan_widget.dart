@@ -2,6 +2,7 @@ import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'return_loan_model.dart';
 export 'return_loan_model.dart';
@@ -130,7 +131,7 @@ class _ReturnLoanWidgetState extends State<ReturnLoanWidget> {
                           ),
                         );
 
-                        context.pushNamed('LoanListPage');
+                        context.pushNamed(LoanListPageWidget.routeName);
                       },
                       text: 'sim',
                       options: FFButtonOptions(

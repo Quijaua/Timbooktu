@@ -2,6 +2,7 @@ import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'user_form_model.dart';
 export 'user_form_model.dart';
@@ -497,7 +498,7 @@ class _UserFormWidgetState extends State<UserFormWidget> {
                             ),
                           );
 
-                          context.pushNamed('UsersListPage');
+                          context.pushNamed(UsersListPageWidget.routeName);
                         },
                         text: 'Salvar',
                         options: FFButtonOptions(

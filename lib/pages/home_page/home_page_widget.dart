@@ -1,12 +1,16 @@
 import '/components/settings_form/settings_form_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
+
+  static String routeName = 'HomePage';
+  static String routePath = '/homePage';
 
   @override
   State<HomePageWidget> createState() => _HomePageWidgetState();
@@ -88,7 +92,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('BooksListPage');
+                        context.pushNamed(BooksListPageWidget.routeName);
                       },
                       child: Material(
                         color: Colors.transparent,
@@ -125,7 +129,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         fontFamily: 'Inter Tight',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 21.0,
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -141,7 +145,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('UsersListPage');
+                        context.pushNamed(UsersListPageWidget.routeName);
                       },
                       child: Material(
                         color: Colors.transparent,
@@ -178,7 +182,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         fontFamily: 'Inter Tight',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 21.0,
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -200,7 +204,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('LoanListPage');
+                        context.pushNamed(LoanListPageWidget.routeName);
                       },
                       child: Material(
                         color: Colors.transparent,
@@ -237,7 +241,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         fontFamily: 'Inter Tight',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 21.0,
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -307,7 +311,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         fontFamily: 'Inter Tight',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 19.0,
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
                                 ),

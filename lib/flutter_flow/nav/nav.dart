@@ -5,8 +5,10 @@ import 'package:provider/provider.dart';
 
 import '/backend/sqlite/sqlite_manager.dart';
 
-import '/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -37,7 +39,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Colors.transparent,
+                color: FlutterFlowTheme.of(context).secondaryBackground,
                 child: Center(
                   child: Image.asset(
                     'assets/images/open-book.png',
@@ -55,7 +57,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: Colors.transparent,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     child: Center(
                       child: Image.asset(
                         'assets/images/open-book.png',
@@ -68,18 +70,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : HomePageWidget(),
         ),
         FFRoute(
-          name: 'UsersListPage',
-          path: '/usersListPage',
+          name: UsersListPageWidget.routeName,
+          path: UsersListPageWidget.routePath,
           builder: (context, params) => UsersListPageWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
+          name: HomePageWidget.routeName,
+          path: HomePageWidget.routePath,
           builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
-          name: 'UserDetailsPage',
-          path: '/userDetailsPage',
+          name: UserDetailsPageWidget.routeName,
+          path: UserDetailsPageWidget.routePath,
           builder: (context, params) => UserDetailsPageWidget(
             user: params.getParam<GetUsersRow>(
               'user',
@@ -88,13 +90,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'BooksListPage',
-          path: '/booksListPage',
+          name: BooksListPageWidget.routeName,
+          path: BooksListPageWidget.routePath,
           builder: (context, params) => BooksListPageWidget(),
         ),
         FFRoute(
-          name: 'BookDetailsPage',
-          path: '/bookDetailsPage',
+          name: BookDetailsPageWidget.routeName,
+          path: BookDetailsPageWidget.routePath,
           builder: (context, params) => BookDetailsPageWidget(
             book: params.getParam<GetBooksRow>(
               'book',
@@ -103,8 +105,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'LoanListPage',
-          path: '/loanListPage',
+          name: LoanListPageWidget.routeName,
+          path: LoanListPageWidget.routePath,
           builder: (context, params) => LoanListPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

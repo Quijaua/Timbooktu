@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'book_details_page_model.dart';
 export 'book_details_page_model.dart';
@@ -17,6 +18,9 @@ class BookDetailsPageWidget extends StatefulWidget {
   });
 
   final GetBooksRow? book;
+
+  static String routeName = 'BookDetailsPage';
+  static String routePath = '/bookDetailsPage';
 
   @override
   State<BookDetailsPageWidget> createState() => _BookDetailsPageWidgetState();
@@ -64,7 +68,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('BooksListPage');
+              context.pushNamed(BooksListPageWidget.routeName);
             },
           ),
           title: Text(

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'users_list_page_model.dart';
@@ -12,6 +13,9 @@ export 'users_list_page_model.dart';
 
 class UsersListPageWidget extends StatefulWidget {
   const UsersListPageWidget({super.key});
+
+  static String routeName = 'UsersListPage';
+  static String routePath = '/usersListPage';
 
   @override
   State<UsersListPageWidget> createState() => _UsersListPageWidgetState();
@@ -119,7 +123,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('HomePage');
+              context.pushNamed(HomePageWidget.routeName);
             },
           ),
           title: Text(
@@ -196,7 +200,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'UserDetailsPage',
+                                  UserDetailsPageWidget.routeName,
                                   queryParameters: {
                                     'user': serializeParam(
                                       listViewGetUsersRow,

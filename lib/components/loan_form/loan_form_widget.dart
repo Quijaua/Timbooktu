@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'loan_form_model.dart';
@@ -227,7 +228,7 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
                             ),
                           );
 
-                          context.pushNamed('LoanListPage');
+                          context.pushNamed(LoanListPageWidget.routeName);
                         },
                         text: 'Salvar',
                         options: FFButtonOptions(

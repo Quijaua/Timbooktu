@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,6 +22,9 @@ class UserDetailsPageWidget extends StatefulWidget {
   });
 
   final GetUsersRow? user;
+
+  static String routeName = 'UserDetailsPage';
+  static String routePath = '/userDetailsPage';
 
   @override
   State<UserDetailsPageWidget> createState() => _UserDetailsPageWidgetState();
@@ -99,7 +103,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('UsersListPage');
+              context.pushNamed(UsersListPageWidget.routeName);
             },
           ),
           actions: [],
@@ -507,7 +511,8 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                                   Navigator.pop(context);
 
                                                   context.pushNamed(
-                                                      'LoanListPage');
+                                                      LoanListPageWidget
+                                                          .routeName);
                                                 },
                                                 child: Container(
                                                   width: double.infinity,

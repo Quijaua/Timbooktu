@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,6 +14,9 @@ export 'loan_list_page_model.dart';
 
 class LoanListPageWidget extends StatefulWidget {
   const LoanListPageWidget({super.key});
+
+  static String routeName = 'LoanListPage';
+  static String routePath = '/loanListPage';
 
   @override
   State<LoanListPageWidget> createState() => _LoanListPageWidgetState();
@@ -91,7 +95,7 @@ class _LoanListPageWidgetState extends State<LoanListPageWidget>
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('HomePage');
+              context.pushNamed(HomePageWidget.routeName);
             },
           ),
           title: Text(
@@ -192,7 +196,7 @@ class _LoanListPageWidgetState extends State<LoanListPageWidget>
 
                                 Navigator.pop(context);
 
-                                context.pushNamed('LoanListPage');
+                                context.pushNamed(LoanListPageWidget.routeName);
                               },
                               child: Container(
                                 width: double.infinity,
