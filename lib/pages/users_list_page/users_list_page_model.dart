@@ -8,19 +8,9 @@ class UsersListPageModel extends FlutterFlowModel<UsersListPageWidget> {
 
   String? searchName;
 
-  ///  State fields for stateful widgets in this page.
-
-  // State field(s) for searchInput widget.
-  FocusNode? searchInputFocusNode;
-  TextEditingController? searchInputTextController;
-  String? Function(BuildContext, String?)? searchInputTextControllerValidator;
-
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    searchInputFocusNode?.dispose();
-    searchInputTextController?.dispose();
-  }
+  void dispose() {}
 }
