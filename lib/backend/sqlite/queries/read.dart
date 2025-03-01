@@ -102,3 +102,27 @@ class GetLoansRow extends SqliteRow {
 }
 
 /// END GETLOANS
+
+/// BEGIN GETALLUSERS
+Future<List<GetAllUsersRow>> performGetAllUsers(
+  Database database,
+) {
+  final query = '''
+SELECT *
+FROM users
+WHERE is_activated = 1;
+''';
+  return _readQuery(database, query, (d) => GetAllUsersRow(d));
+}
+
+class GetAllUsersRow extends SqliteRow {
+  GetAllUsersRow(Map<String, dynamic> data) : super(data);
+
+  int? get id => data['id'] as int?;
+  String? get name => data['name'] as String?;
+  String? get email => data['email'] as String?;
+  String? get phone => data['phone'] as String?;
+  String? get cpf => data['cpf'] as String?;
+}
+
+/// END GETALLUSERS

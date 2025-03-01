@@ -106,10 +106,8 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
                                   ),
                             ),
                           ),
-                          FutureBuilder<List<GetUsersRow>>(
-                            future: SQLiteManager.instance.getUsers(
-                              name: null,
-                            ),
+                          FutureBuilder<List<GetAllUsersRow>>(
+                            future: SQLiteManager.instance.getAllUsers(),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -125,19 +123,19 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
                                   ),
                                 );
                               }
-                              final nameGetUsersRowList = snapshot.data!;
+                              final nameGetAllUsersRowList = snapshot.data!;
 
                               return FlutterFlowDropDown<String>(
                                 controller: _model.nameValueController ??=
                                     FormFieldController<String>(null),
-                                options: nameGetUsersRowList
+                                options: nameGetAllUsersRowList
                                     .map((e) => e.name)
                                     .withoutNulls
                                     .toList(),
                                 onChanged: (val) async {
                                   safeSetState(() => _model.nameValue = val);
                                   _model.userid =
-                                      nameGetUsersRowList.firstOrNull?.id;
+                                      nameGetAllUsersRowList.firstOrNull?.id;
                                   safeSetState(() {});
                                 },
                                 width: 310.7,

@@ -55,6 +55,10 @@ class SQLiteManager {
         searchId: searchId,
       );
 
+  Future<List<GetAllUsersRow>> getAllUsers() => performGetAllUsers(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
