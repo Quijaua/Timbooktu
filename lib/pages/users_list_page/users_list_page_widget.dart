@@ -38,8 +38,9 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.searchName = null;
-      safeSetState(() {});
+      await SQLiteManager.instance.getUsers(
+        name: _model.searchName,
+      );
     });
 
     _model.searchTextTextController ??= TextEditingController();
@@ -255,7 +256,8 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                     children: [
                       FutureBuilder<List<GetUsersRow>>(
                         future: SQLiteManager.instance.getUsers(
-                          name: '',
+                          name:
+                              _model.searchName == '' ? _model.searchName : '',
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
