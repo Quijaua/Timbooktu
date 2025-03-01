@@ -43,7 +43,7 @@ Future<List<GetBooksRow>> performGetBooks(
   final query = '''
 SELECT * FROM books  
 WHERE title LIKE '%' || COALESCE('${searchText}', '') || '%' 
-   OR author LIKE '%' || COALESCE('${searchText}', '') || '%';
+   OR autor LIKE '%' || COALESCE('${searchText}', '') || '%';
 ''';
   return _readQuery(database, query, (d) => GetBooksRow(d));
 }
