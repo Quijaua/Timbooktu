@@ -255,7 +255,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                     children: [
                       FutureBuilder<List<GetUsersRow>>(
                         future: SQLiteManager.instance.getUsers(
-                          name: null,
+                          name: '',
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
