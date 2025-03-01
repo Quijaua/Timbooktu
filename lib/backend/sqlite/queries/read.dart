@@ -67,7 +67,6 @@ class GetBooksRow extends SqliteRow {
 Future<List<GetLoansRow>> performGetLoans(
   Database database, {
   String? searchText,
-  int? searchId,
 }) {
   final query = '''
 SELECT 
@@ -83,9 +82,7 @@ JOIN
 JOIN 
     users ON loans.user_id = users.id
 WHERE 
-    (users.name LIKE '%' || COALESCE('${searchText}', '') || '%' OR '${searchText}' = '')
-    AND 
-    (users.id = COALESCE(NULLIF('${searchId}', ''), users.id) OR ('${searchId}' = '' AND users.id IS NULL));
+    (books.title LIKE '%' || COALESCE('${searchText}', '') || '%' OR '${searchText}' = '');
 ''';
   return _readQuery(database, query, (d) => GetLoansRow(d));
 }
@@ -126,3 +123,39 @@ class GetAllUsersRow extends SqliteRow {
 }
 
 /// END GETALLUSERS
+
+/// BEGIN GETLOANSTOUSERID
+Future<List<GetLoansToUserIdRow>> performGetLoansToUserId(
+  Database database, {
+  int? searchId,
+}) {
+  final query = '''
+SELECT 
+    loans.id AS id,
+    books.title AS book_title,
+    users.name AS user_name, 
+    loans.loan_date, 
+    loans.return_date, 
+    loans.is_activated
+FROM loans
+JOIN books ON loans.book_id = books.id 
+JOIN users ON loans.user_id = users.id
+WHERE 
+    (users.id = COALESCE('${searchId}', users.id) OR '${searchId}' = '');
+
+''';
+  return _readQuery(database, query, (d) => GetLoansToUserIdRow(d));
+}
+
+class GetLoansToUserIdRow extends SqliteRow {
+  GetLoansToUserIdRow(Map<String, dynamic> data) : super(data);
+
+  int? get id => data['id'] as int?;
+  String? get bookTitle => data['book_title'] as String?;
+  String? get userName => data['user_name'] as String?;
+  String? get loanDate => data['loan_date'] as String?;
+  String? get returnDate => data['return_date'] as String?;
+  int? get isActivated => data['is_activated'] as int?;
+}
+
+/// END GETLOANSTOUSERID

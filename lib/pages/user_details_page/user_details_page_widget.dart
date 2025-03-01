@@ -124,7 +124,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                   decoration: BoxDecoration(),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -416,9 +416,10 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                    child: FutureBuilder<List<GetLoansRow>>(
-                                      future: SQLiteManager.instance.getLoans(
-                                        searchText: '',
+                                    child: FutureBuilder<
+                                        List<GetLoansToUserIdRow>>(
+                                      future: SQLiteManager.instance
+                                          .getLoansToUserId(
                                         searchId: widget.user?.id,
                                       ),
                                       builder: (context, snapshot) {
@@ -439,9 +440,10 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                             ),
                                           );
                                         }
-                                        final listViewGetLoansRowList =
+                                        final listViewGetLoansToUserIdRowList =
                                             snapshot.data!;
-                                        if (listViewGetLoansRowList.isEmpty) {
+                                        if (listViewGetLoansToUserIdRowList
+                                            .isEmpty) {
                                           return Center(
                                             child: Container(
                                               height: MediaQuery.sizeOf(context)
@@ -463,13 +465,14 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                           shrinkWrap: true,
                                           scrollDirection: Axis.vertical,
                                           itemCount:
-                                              listViewGetLoansRowList.length,
+                                              listViewGetLoansToUserIdRowList
+                                                  .length,
                                           separatorBuilder: (_, __) =>
                                               SizedBox(height: 10.0),
                                           itemBuilder:
                                               (context, listViewIndex) {
-                                            final listViewGetLoansRow =
-                                                listViewGetLoansRowList[
+                                            final listViewGetLoansToUserIdRow =
+                                                listViewGetLoansToUserIdRowList[
                                                     listViewIndex];
                                             return Padding(
                                               padding: EdgeInsetsDirectional
@@ -502,7 +505,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                                                   context),
                                                           child:
                                                               ReturnLoanWidget(
-                                                            id: listViewGetLoansRow
+                                                            id: listViewGetLoansToUserIdRow
                                                                 .id!,
                                                           ),
                                                         ),
@@ -593,7 +596,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                                                 child: Text(
                                                                   valueOrDefault<
                                                                       String>(
-                                                                    listViewGetLoansRow
+                                                                    listViewGetLoansToUserIdRow
                                                                         .bookTitle,
                                                                     'titulo',
                                                                   ),
@@ -655,7 +658,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                                                     child: Text(
                                                                       valueOrDefault<
                                                                           String>(
-                                                                        listViewGetLoansRow
+                                                                        listViewGetLoansToUserIdRow
                                                                             .userName,
                                                                         'nome',
                                                                       ),
@@ -719,7 +722,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                                                     child: Text(
                                                                       valueOrDefault<
                                                                           String>(
-                                                                        listViewGetLoansRow
+                                                                        listViewGetLoansToUserIdRow
                                                                             .loanDate,
                                                                         '00/00/0000',
                                                                       ),
@@ -783,7 +786,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                                                     child: Text(
                                                                       valueOrDefault<
                                                                           String>(
-                                                                        listViewGetLoansRow
+                                                                        listViewGetLoansToUserIdRow
                                                                             .returnDate,
                                                                         '00/00/0000',
                                                                       ),
@@ -845,7 +848,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                                                             0.0,
                                                                             0.0),
                                                                     child: Text(
-                                                                      listViewGetLoansRow.isActivated ==
+                                                                      listViewGetLoansToUserIdRow.isActivated ==
                                                                               1
                                                                           ? 'emprestado'
                                                                           : 'devolvido',
@@ -857,7 +860,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                                                                 'Plus Jakarta Sans',
                                                                             color:
                                                                                 colorFromCssString(
-                                                                              listViewGetLoansRow.isActivated == 1 ? '#F9CF58' : '#39D2C0',
+                                                                              listViewGetLoansToUserIdRow.isActivated == 1 ? '#F9CF58' : '#39D2C0',
                                                                               defaultColor: Colors.black,
                                                                             ),
                                                                             fontSize:

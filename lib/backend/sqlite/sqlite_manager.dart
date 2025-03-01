@@ -47,16 +47,22 @@ class SQLiteManager {
 
   Future<List<GetLoansRow>> getLoans({
     String? searchText,
-    int? searchId,
   }) =>
       performGetLoans(
         _database,
         searchText: searchText,
-        searchId: searchId,
       );
 
   Future<List<GetAllUsersRow>> getAllUsers() => performGetAllUsers(
         _database,
+      );
+
+  Future<List<GetLoansToUserIdRow>> getLoansToUserId({
+    int? searchId,
+  }) =>
+      performGetLoansToUserId(
+        _database,
+        searchId: searchId,
       );
 
   /// END READ QUERY CALLS

@@ -214,6 +214,8 @@ dynamic deserializeParam<T>(
             return GetLoansRow(data);
           case GetAllUsersRow:
             return GetAllUsersRow(data);
+          case GetLoansToUserIdRow:
+            return GetLoansToUserIdRow(data);
           default:
             return null;
         }
