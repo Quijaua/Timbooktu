@@ -40,6 +40,9 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.searchName = null;
       safeSetState(() {});
+      await SQLiteManager.instance.getUsers(
+        name: _model.searchName,
+      );
     });
 
     _model.searchTextTextController ??= TextEditingController();
