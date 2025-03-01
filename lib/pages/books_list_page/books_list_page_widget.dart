@@ -399,21 +399,38 @@ class _BooksListPageWidgetState extends State<BooksListPageWidget>
                                             ],
                                           ),
                                         ),
-                                        Card(
-                                          clipBehavior:
-                                              Clip.antiAliasWithSaveLayer,
-                                          color: Color(0xFFF1F4F8),
-                                          elevation: 1.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(40.0),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(4.0),
-                                            child: Icon(
-                                              Icons.arrow_forward_ios,
-                                              color: Color(0xFF57636C),
-                                              size: 24.0,
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              BookDetailsPageWidget.routeName,
+                                              queryParameters: {
+                                                'book': serializeParam(
+                                                  listViewGetBooksRow,
+                                                  ParamType.SqliteRow,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Card(
+                                            clipBehavior:
+                                                Clip.antiAliasWithSaveLayer,
+                                            color: Color(0xFFF1F4F8),
+                                            elevation: 1.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(40.0),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(4.0),
+                                              child: Icon(
+                                                Icons.arrow_forward_ios,
+                                                color: Color(0xFF57636C),
+                                                size: 24.0,
+                                              ),
                                             ),
                                           ),
                                         ),
