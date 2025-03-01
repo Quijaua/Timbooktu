@@ -1,6 +1,6 @@
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/book_form/book_form_widget.dart';
-import '/components/users_empty_state/users_empty_state_widget.dart';
+import '/components/books_empty_state/books_empty_state_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -272,7 +272,7 @@ class _BooksListPageWidgetState extends State<BooksListPageWidget>
                             return Center(
                               child: Container(
                                 height: MediaQuery.sizeOf(context).height * 0.7,
-                                child: UsersEmptyStateWidget(),
+                                child: BooksEmptyStateWidget(),
                               ),
                             );
                           }
