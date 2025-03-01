@@ -37,11 +37,13 @@ class GetUsersRow extends SqliteRow {
 
 /// BEGIN GETBOOKS
 Future<List<GetBooksRow>> performGetBooks(
-  Database database,
-) {
+  Database database, {
+  String? searchText,
+}) {
   final query = '''
-SELECT * FROM books;
-
+SELECT * FROM books  
+WHERE title LIKE '%' || COALESCE('${searchText}', '') || '%' 
+   OR author LIKE '%' || COALESCE('${searchText}', '') || '%';
 ''';
   return _readQuery(database, query, (d) => GetBooksRow(d));
 }
@@ -63,8 +65,10 @@ class GetBooksRow extends SqliteRow {
 
 /// BEGIN GETLOANS
 Future<List<GetLoansRow>> performGetLoans(
-  Database database,
-) {
+  Database database, {
+  String? searchText,
+  int? searchId,
+}) {
   final query = '''
 SELECT 
     loans.id AS id,
@@ -77,7 +81,11 @@ SELECT
 JOIN 
     books ON loans.book_id = books.id 
 JOIN 
-    users ON loans.user_id = users.id;
+    users ON loans.user_id = users.id
+WHERE 
+    (users.name LIKE '%' || COALESCE('${searchText}', '') || '%' OR '${searchText}' = '')
+    AND 
+    (users.id = COALESCE(NULLIF('${searchId}', ''), users.id) OR ('${searchId}' = '' AND users.id IS NULL));
 ''';
   return _readQuery(database, query, (d) => GetLoansRow(d));
 }

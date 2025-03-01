@@ -37,12 +37,22 @@ class SQLiteManager {
         name: name,
       );
 
-  Future<List<GetBooksRow>> getBooks() => performGetBooks(
+  Future<List<GetBooksRow>> getBooks({
+    String? searchText,
+  }) =>
+      performGetBooks(
         _database,
+        searchText: searchText,
       );
 
-  Future<List<GetLoansRow>> getLoans() => performGetLoans(
+  Future<List<GetLoansRow>> getLoans({
+    String? searchText,
+    int? searchId,
+  }) =>
+      performGetLoans(
         _database,
+        searchText: searchText,
+        searchId: searchId,
       );
 
   /// END READ QUERY CALLS

@@ -417,7 +417,10 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: FutureBuilder<List<GetLoansRow>>(
-                                      future: SQLiteManager.instance.getLoans(),
+                                      future: SQLiteManager.instance.getLoans(
+                                        searchText: '',
+                                        searchId: widget.user?.id,
+                                      ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {

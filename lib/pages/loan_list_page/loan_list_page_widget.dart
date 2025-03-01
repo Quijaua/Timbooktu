@@ -121,7 +121,10 @@ class _LoanListPageWidgetState extends State<LoanListPageWidget>
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   FutureBuilder<List<GetLoansRow>>(
-                    future: SQLiteManager.instance.getLoans(),
+                    future: SQLiteManager.instance.getLoans(
+                      searchId: null,
+                      searchText: null,
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
