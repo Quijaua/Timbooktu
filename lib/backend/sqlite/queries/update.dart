@@ -139,7 +139,7 @@ Future performReturnLoan(
 }) {
   final query = '''
 UPDATE loans
-SET is_activated = 0,
+SET is_activated = 0
 WHERE id = ${id};
 
 ''';
