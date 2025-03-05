@@ -1,3 +1,4 @@
+import '';
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/user_form/user_form_widget.dart';
 import '/components/users_empty_state/users_empty_state_widget.dart';
@@ -285,7 +286,10 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                         children: [
                           FutureBuilder<List<GetUsersRow>>(
                             future: SQLiteManager.instance.getUsers(
-                              name: _model.searchName,
+                              name: valueOrDefault<String>(
+                                _model.searchName,
+                                'bob',
+                              ),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
