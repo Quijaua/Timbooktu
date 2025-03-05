@@ -288,7 +288,7 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                             future: SQLiteManager.instance.getUsers(
                               name: valueOrDefault<String>(
                                 _model.searchName,
-                                'bob',
+                                '\' \'',
                               ),
                             ),
                             builder: (context, snapshot) {
