@@ -286,10 +286,9 @@ class _UsersListPageWidgetState extends State<UsersListPageWidget>
                         children: [
                           FutureBuilder<List<GetUsersRow>>(
                             future: SQLiteManager.instance.getUsers(
-                              name: valueOrDefault<String>(
-                                _model.searchName,
-                                '\' \'',
-                              ),
+                              name: _model.searchTextTextController.text != ''
+                                  ? _model.searchTextTextController.text
+                                  : '',
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
