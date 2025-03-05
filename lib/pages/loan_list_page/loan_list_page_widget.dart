@@ -222,7 +222,9 @@ class _LoanListPageWidgetState extends State<LoanListPageWidget>
                     children: [
                       FutureBuilder<List<GetLoansRow>>(
                         future: SQLiteManager.instance.getLoans(
-                          searchText: _model.searchText,
+                          searchText: _model.searchTextTextController.text != ''
+                              ? _model.searchTextTextController.text
+                              : '',
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.

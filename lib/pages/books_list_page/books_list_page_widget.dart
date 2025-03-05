@@ -251,7 +251,9 @@ class _BooksListPageWidgetState extends State<BooksListPageWidget>
                     children: [
                       FutureBuilder<List<GetBooksRow>>(
                         future: SQLiteManager.instance.getBooks(
-                          searchText: _model.searchText,
+                          searchText: _model.searchTextTextController.text != ''
+                              ? _model.searchTextTextController.text
+                              : '',
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
