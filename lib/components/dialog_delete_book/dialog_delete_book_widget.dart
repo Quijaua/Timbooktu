@@ -110,34 +110,91 @@ class _DialogDeleteBookWidgetState extends State<DialogDeleteBookWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await SQLiteManager.instance.deleteBook(
-                          id: widget.id!,
-                        );
+                    FutureBuilder<List<GetLoanByIdRow>>(
+                      future: SQLiteManager.instance.getLoanById(
+                        bookId: widget.id,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        final buttonGetLoanByIdRowList = snapshot.data!;
 
-                        context.pushNamed(BooksListPageWidget.routeName);
-                      },
-                      text: 'Excluir',
-                      options: FFButtonOptions(
-                        width: 120.0,
-                        height: 40.0,
-                        padding: EdgeInsets.all(8.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).error,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                        return FFButtonWidget(
+                          onPressed: () async {
+                            if (buttonGetLoanByIdRowList
+                                    .firstOrNull?.isActivated ==
+                                1) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Não é possivel deletar um livro que está emprestado',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).error,
+                                ),
+                              );
+                            } else {
+                              await SQLiteManager.instance.deleteBook(
+                                id: widget.id!,
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'O livro foi deletado com sucesso',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
+                            }
+
+                            context.pushNamed(BooksListPageWidget.routeName);
+                          },
+                          text: 'Excluir',
+                          options: FFButtonOptions(
+                            width: 120.0,
+                            height: 40.0,
+                            padding: EdgeInsets.all(8.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).error,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
                                   fontFamily: 'Inter',
                                   color: FlutterFlowTheme.of(context).info,
                                   letterSpacing: 0.0,
                                 ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+                            elevation: 0.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        );
+                      },
                     ),
                   ].divide(SizedBox(width: 12.0)),
                 ),

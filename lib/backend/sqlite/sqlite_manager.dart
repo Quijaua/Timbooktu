@@ -65,6 +65,14 @@ class SQLiteManager {
         searchId: searchId,
       );
 
+  Future<List<GetLoanByIdRow>> getLoanById({
+    int? bookId,
+  }) =>
+      performGetLoanById(
+        _database,
+        bookId: bookId,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
