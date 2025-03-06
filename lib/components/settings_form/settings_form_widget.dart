@@ -35,7 +35,7 @@ class _SettingsFormWidgetState extends State<SettingsFormWidget> {
     super.initState();
     _model = createModel(context, () => SettingsFormModel());
 
-    _model.loanTimeTextController ??= TextEditingController();
+    _model.loanTimeTextController ??= TextEditingController(text: '15');
     _model.loanTimeFocusNode ??= FocusNode();
   }
 
