@@ -322,7 +322,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                     Text(
                                       valueOrDefault<String>(
                                         widget.user?.email,
-                                        'email@email.com',
+                                        'sem informações',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
@@ -345,7 +345,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                     Text(
                                       valueOrDefault<String>(
                                         widget.user?.cpf,
-                                        '123.123.123-98',
+                                        'sem informações',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
@@ -368,7 +368,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget>
                                     Text(
                                       valueOrDefault<String>(
                                         widget.user?.phone,
-                                        '(11) 98765-4321',
+                                        'sem informações',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
