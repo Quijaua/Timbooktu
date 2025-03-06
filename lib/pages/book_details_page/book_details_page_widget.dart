@@ -322,7 +322,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             Text(
                                               valueOrDefault<String>(
                                                 widget.book?.editor,
-                                                'Editora do livro',
+                                                'sem informações',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -342,7 +342,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
-                                              'Ano de Publicação:',
+                                              'Publicação:',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -359,7 +359,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                               valueOrDefault<String>(
                                                 widget.book?.publishYear
                                                     ?.toString(),
-                                                'ano de publicação',
+                                                'sem informações',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -395,7 +395,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             Text(
                                               valueOrDefault<String>(
                                                 widget.book?.isbn,
-                                                'isbn do livro',
+                                                'sem informações',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -431,7 +431,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             Text(
                                               valueOrDefault<String>(
                                                 widget.book?.category,
-                                                'categoria ou assunto',
+                                                'sem informações',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -467,7 +467,7 @@ class _BookDetailsPageWidgetState extends State<BookDetailsPageWidget> {
                                             Text(
                                               valueOrDefault<String>(
                                                 widget.book?.localization,
-                                                'local do livro na estante',
+                                                'sem informações',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
