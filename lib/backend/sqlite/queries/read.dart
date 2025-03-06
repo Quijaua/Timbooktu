@@ -178,7 +178,6 @@ JOIN
     books ON loans.book_id = books.id 
 JOIN 
     users ON loans.user_id = users.id
-WHERE 
  WHERE books.id = ${bookId};
 ''';
   return _readQuery(database, query, (d) => GetLoanByIdRow(d));
