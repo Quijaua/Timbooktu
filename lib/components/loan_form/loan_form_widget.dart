@@ -135,8 +135,11 @@ class _LoanFormWidgetState extends State<LoanFormWidget> {
                                     .toList(),
                                 onChanged: (val) async {
                                   safeSetState(() => _model.nameValue = val);
-                                  _model.userid =
-                                      nameGetAllUsersRowList.firstOrNull?.id;
+                                  _model.userid = nameGetAllUsersRowList
+                                      .where((e) => e.name == _model.nameValue)
+                                      .toList()
+                                      .firstOrNull
+                                      ?.id;
                                   safeSetState(() {});
                                 },
                                 width: 310.7,
