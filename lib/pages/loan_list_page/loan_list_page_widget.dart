@@ -652,8 +652,8 @@ class _LoanListPageWidgetState extends State<LoanListPageWidget>
                                           ),
                                           if (listViewGetLoansRow.isActivated ==
                                                   1
-                                              ? false
-                                              : true)
+                                              ? true
+                                              : false)
                                             Card(
                                               clipBehavior:
                                                   Clip.antiAliasWithSaveLayer,
