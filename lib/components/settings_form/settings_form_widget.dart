@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'settings_form_model.dart';
 export 'settings_form_model.dart';
 
@@ -35,7 +36,8 @@ class _SettingsFormWidgetState extends State<SettingsFormWidget> {
     super.initState();
     _model = createModel(context, () => SettingsFormModel());
 
-    _model.loanTimeTextController ??= TextEditingController(text: '15');
+    _model.loanTimeTextController ??=
+        TextEditingController(text: FFAppState().returnDateDays.toString());
     _model.loanTimeFocusNode ??= FocusNode();
   }
 
@@ -48,6 +50,8 @@ class _SettingsFormWidgetState extends State<SettingsFormWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
       child: Container(
