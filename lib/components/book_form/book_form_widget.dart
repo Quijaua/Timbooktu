@@ -52,7 +52,7 @@ class _BookFormWidgetState extends State<BookFormWidget> {
     _model.publishYearTextController ??= TextEditingController(
         text: widget.isEdit == true
             ? widget.book?.publishYear?.toString()
-            : null);
+            : '');
     _model.publishYearFocusNode ??= FocusNode();
 
     _model.isbnTextController ??= TextEditingController(
@@ -445,6 +445,14 @@ class _BookFormWidgetState extends State<BookFormWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                     minLines: 1,
+                                    maxLength: 4,
+                                    maxLengthEnforcement:
+                                        MaxLengthEnforcement.none,
+                                    buildCounter: (context,
+                                            {required currentLength,
+                                            required isFocused,
+                                            maxLength}) =>
+                                        null,
                                     keyboardType: TextInputType.number,
                                     validator: _model
                                         .publishYearTextControllerValidator
@@ -767,7 +775,7 @@ class _BookFormWidgetState extends State<BookFormWidget> {
                             _model.publishYearTextController?.text =
                                 widget.isEdit == true
                                     ? widget.book!.publishYear!.toString()
-                                    : null;
+                                    : '';
 
                             _model.isbnTextController?.text =
                                 widget.isEdit == true
