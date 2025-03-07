@@ -41,11 +41,10 @@ Future<List<GetBooksRow>> performGetBooks(
   String? searchText,
 }) {
   final query = '''
-SELECT * FROM books
+SELECT * FROM books 
 WHERE is_activated = 1 
- AND
-  title LIKE '%' || COALESCE('${searchText}', '') || '%' 
-   OR autor LIKE '%' || COALESCE('${searchText}', '') || '%';
+  AND (title LIKE '%' || COALESCE('${searchText}', '') || '%' 
+       OR autor LIKE '%' || COALESCE('${searchText}', '') || '%');
 ''';
   return _readQuery(database, query, (d) => GetBooksRow(d));
 }
