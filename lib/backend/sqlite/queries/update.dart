@@ -46,7 +46,7 @@ Future performDeleteUser(
   int? id,
 }) {
   final query = '''
-DELETE FROM users
+UPDATE users
 SET is_activated = 0
 WHERE id = ${id};
 ''';
@@ -61,7 +61,7 @@ Future performDeleteBook(
   int? id,
 }) {
   final query = '''
-DELETE FROM books 
+UPDATE books 
 SET is_activated = 0
 WHERE id = ${id};
 ''';
