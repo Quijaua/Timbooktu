@@ -52,7 +52,7 @@ class _BookFormWidgetState extends State<BookFormWidget> {
     _model.publishYearTextController ??= TextEditingController(
         text: widget.isEdit == true
             ? widget.book?.publishYear?.toString()
-            : '');
+            : null);
     _model.publishYearFocusNode ??= FocusNode();
 
     _model.isbnTextController ??= TextEditingController(
@@ -767,7 +767,7 @@ class _BookFormWidgetState extends State<BookFormWidget> {
                             _model.publishYearTextController?.text =
                                 widget.isEdit == true
                                     ? widget.book!.publishYear!.toString()
-                                    : '';
+                                    : null;
 
                             _model.isbnTextController?.text =
                                 widget.isEdit == true
