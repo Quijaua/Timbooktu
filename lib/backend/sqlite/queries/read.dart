@@ -41,8 +41,10 @@ Future<List<GetBooksRow>> performGetBooks(
   String? searchText,
 }) {
   final query = '''
-SELECT * FROM books  
-WHERE title LIKE '%' || COALESCE('${searchText}', '') || '%' 
+SELECT * FROM books
+WHERE is_activated = 1 
+ AND
+  title LIKE '%' || COALESCE('${searchText}', '') || '%' 
    OR autor LIKE '%' || COALESCE('${searchText}', '') || '%';
 ''';
   return _readQuery(database, query, (d) => GetBooksRow(d));
@@ -59,6 +61,7 @@ class GetBooksRow extends SqliteRow {
   String? get isbn => data['isbn'] as String?;
   String? get category => data['category'] as String?;
   String? get localization => data['localization'] as String?;
+  int? get isActivated => data['is_activated'] as int?;
 }
 
 /// END GETBOOKS

@@ -46,7 +46,9 @@ Future performDeleteUser(
   int? id,
 }) {
   final query = '''
-DELETE FROM users WHERE id = ${id};
+DELETE FROM users
+SET is_activated = 0
+WHERE id = ${id};
 ''';
   return database.rawQuery(query);
 }
@@ -59,7 +61,9 @@ Future performDeleteBook(
   int? id,
 }) {
   final query = '''
-DELETE FROM books WHERE id = ${id};
+DELETE FROM books 
+SET is_activated = 0
+WHERE id = ${id};
 ''';
   return database.rawQuery(query);
 }
